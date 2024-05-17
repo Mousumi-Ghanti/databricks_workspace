@@ -15,17 +15,18 @@ resources:
         - task_key: LandingToBronze_task
           job_cluster_key: job_cluster
           notebook_task:
-            notebook_path: ./Workspace/Users/dev.mousumi.ghanti@gmail.com/LandingToBronze
-        - task_key: BronzeToSilver_task
-          job_cluster_key: job_cluster
-          depends_on:
-             - task_key: LandingToBronze_task
-          notebook_task:
-            notebook_path: ./Workspace/Users/dev.mousumi.ghanti@gmail.com/BronzeToSilver
+            notebook_path: ../src/LandingToBronze.ipynb
+            
+        # - task_key: BronzeToSilver_task
+        #   job_cluster_key: job_cluster
+        #   depends_on:
+        #      - task_key: LandingToBronze_task
+        #   notebook_task:
+        #     notebook_path: ./Workspace/Users/dev.mousumi.ghanti@gmail.com/BronzeToSilver
         
-        - task_key: refresh_pipeline
-          pipeline_task:
-            pipeline_id: ${resources.pipelines.project1_pipeline.id}
+        # - task_key: refresh_pipeline
+        #   pipeline_task:
+        #     pipeline_id: ${resources.pipelines.project1_pipeline.id}
         
         # - task_key: main_task
         #   depends_on:

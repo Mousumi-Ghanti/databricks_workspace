@@ -26,14 +26,14 @@ targets:
   #     host: https://dbc-5154bde0-9094.cloud.databricks.com
 
   # The 'prod' target, used for production deployment.
-  prod:
-    # We use 'mode: production' to indicate this is a production deployment.
-    # Doing so enables strict verification of the settings below.
-    mode: production
-    workspace:
-      host: https://dbc-5154bde0-9094.cloud.databricks.com
-      # We always use /Users/d46cd08f-cbea-4b56-81b9-e2e36ed96e37 for all resources to make sure we only have a single copy.
-      # If this path results in an error, please make sure you have a recent version of the CLI installed.
-      root_path: /Users/d46cd08f-cbea-4b56-81b9-e2e36ed96e37/.bundle/${bundle.name}/${bundle.target}
-    run_as:
-      service_principal_name: d46cd08f-cbea-4b56-81b9-e2e36ed96e37
+  # prod:
+  #   # We use 'mode: production' to indicate this is a production deployment.
+  #   # Doing so enables strict verification of the settings below.
+  #   mode: production
+  #   workspace:
+  #     host: https://dbc-5154bde0-9094.cloud.databricks.com
+  #     # We always use /Users/d46cd08f-cbea-4b56-81b9-e2e36ed96e37 for all resources to make sure we only have a single copy.
+  #     # If this path results in an error, please make sure you have a recent version of the CLI installed.
+  #     root_path: /Users/d46cd08f-cbea-4b56-81b9-e2e36ed96e37/.bundle/${bundle.name}/${bundle.target}
+  #   run_as:
+  #     service_principal_name: d46cd08f-cbea-4b56-81b9-e2e36ed96e37
