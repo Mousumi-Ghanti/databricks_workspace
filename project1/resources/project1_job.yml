@@ -6,33 +6,39 @@ resources:
 
       schedule:
         # Run every day at 8:37 AM
-        quartz_cron_expression: '44 37 8 * * ?'
-        timezone_id: Europe/Amsterdam
-
+        quartz_cron_expression: '* * * ? * *'
+        timezone_id: Asia/Calcutta
+      email_notifications:
+        on_failure:
+          - mousumic828@gmail.com
       tasks:
-        - task_key: notebook_task
+        - task_key: LandingToBronze_task
           job_cluster_key: job_cluster
           notebook_task:
-            notebook_path: ../src/notebook.ipynb
+            notebook_path: ./Workspace/Users/dev.mousumi.ghanti@gmail.com/LandingToBronze
+        - task_key: BronzeToSilver_task
+          job_cluster_key: job_cluster
+          depends_on:
+             - task_key: LandingToBronze_task
+          notebook_task:
+            notebook_path: ./Workspace/Users/dev.mousumi.ghanti@gmail.com/BronzeToSilver
         
         - task_key: refresh_pipeline
-          depends_on:
-            - task_key: notebook_task
           pipeline_task:
             pipeline_id: ${resources.pipelines.project1_pipeline.id}
         
-        - task_key: main_task
-          depends_on:
-            - task_key: refresh_pipeline
-          job_cluster_key: job_cluster
-          python_wheel_task:
-            package_name: project1
-            entry_point: main
-          libraries:
-            # By default we just include the .whl file generated for the project1 package.
-            # See https://docs.databricks.com/dev-tools/bundles/library-dependencies.html
-            # for more information on how to add other libraries.
-            - whl: ../dist/*.whl
+        # - task_key: main_task
+        #   depends_on:
+        #     - task_key: refresh_pipeline
+        #   job_cluster_key: job_cluster
+        #   python_wheel_task:
+        #     package_name: project1
+        #     entry_point: main
+        #   libraries:
+        #     # By default we just include the .whl file generated for the project1 package.
+        #     # See https://docs.databricks.com/dev-tools/bundles/library-dependencies.html
+        #     # for more information on how to add other libraries.
+        #     - whl: ../dist/*.whl
 
       job_clusters:
         - job_cluster_key: job_cluster

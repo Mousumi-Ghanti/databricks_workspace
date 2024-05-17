@@ -3,10 +3,17 @@ resources:
   pipelines:
     project1_pipeline:
       name: project1_pipeline
-      target: project1_${bundle.environment}
+      catalog: databricks_main_ws
+      target: bronze
+      continuous: false
+      channel: "PREVIEW"
+      photon: false
+      edition: "ADVANCED"
       libraries:
         - notebook:
-            path: ../src/dlt_pipeline.ipynb
-
+            path: ./Workspace/Users/dev.mousumi.ghanti@gmail.com/DLT_Landing_Bronze_Silver_Gold
+        - clusters:
+          - label: "default"
+            num_workers: 1
       configuration:
         bundle.sourcePath: /Workspace/${workspace.file_path}/src
