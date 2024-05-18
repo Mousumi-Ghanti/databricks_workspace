@@ -11,7 +11,7 @@ resources:
       edition: "ADVANCED"
       libraries:
         - notebook:
-            path: ./Workspace/Users/dev.mousumi.ghanti@gmail.com/DLT_Landing_Bronze_Silver_Gold
+            path: ../src/DLT_Landing_Bronze_Silver_Gold.ipynb
         - clusters:
           - label: "default"
             num_workers: 1
