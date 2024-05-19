@@ -20,9 +20,8 @@ setup(
     version=project1.__version__ + "+" + datetime.datetime.utcnow().strftime("%Y%m%d.%H%M%S"),
     url="https://databricks.com",
     author="d46cd08f-cbea-4b56-81b9-e2e36ed96e37",
-    description="wheel file based on project1/src",
-    packages=find_packages(where='./src'),
-    package_dir={'': 'src'},
+    packages=find_packages(where='./wheel'),
+    package_dir={'': 'wheel'},
     entry_points={
         "packages": [
             "main=project1.main:main"
